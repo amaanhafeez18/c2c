@@ -15,6 +15,10 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
     prefix = industry + "_" + month + "_"; // For example, 'Retail_oct_'
     start = parseInt(document.getElementById('start').value);
     end = parseInt(document.getElementById('end').value);
+    if (start >= end) {
+        alert("The start value must be less than the end value. Please enter a valid value.");
+        return; // Stop the submission process
+    }
 
     if (start % 10 !== 1) {
         alert("The start value must end in a 1 (e.g., 1, 2001, 5001). Please enter a valid value.");
