@@ -16,6 +16,11 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
     start = parseInt(document.getElementById('start').value);
     end = parseInt(document.getElementById('end').value);
 
+    if (start % 10 !== 1) {
+        alert("The start value must end in a 1 (e.g., 1, 2001, 5001). Please enter a valid value.");
+        return; // Stop the submission process
+    }
+
     // Calculate total pages
     totalPages = Math.ceil((end - start + 1) / (itemsPerPage * step));
 
