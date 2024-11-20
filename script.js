@@ -373,3 +373,8 @@ document.getElementById("homeButton").addEventListener("click", function () {
 window.addEventListener('DOMContentLoaded', () => {
     promptLoadProgress();
 });
+
+window.addEventListener('error', (event) => {
+    console.error('Global error captured:', event.error);
+    alert('An unexpected error occurred. Please reload the page.');
+  });
