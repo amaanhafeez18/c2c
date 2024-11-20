@@ -5,6 +5,33 @@ let step = 2000;
 let totalPages = 0;
 let copiedButtonsByPage = {}; // Track copied buttons per page
 
+window.onload = function () {
+    const savedIndustry = getCookie('industry');
+    const savedMonth = getCookie('month');
+    const savedStart = getCookie('start');
+    const savedEnd = getCookie('end');
+    const savedClickedButtons = getCookie('clickedButtons');
+
+    if (savedIndustry && savedMonth && savedStart && savedEnd) {
+        const useSaved = confirm("We found saved values. Do you want to use them?");
+        if (useSaved) {
+            // Load saved values
+            industry = savedIndustry;
+            month = savedMonth;
+            start = parseInt(savedStart);
+            end = parseInt(savedEnd);
+            copiedButtonsByPage = savedClickedButtons ? JSON.parse(savedClickedButtons) : {};
+
+            // Skip the landing page
+            totalPages = Math.ceil((end - start + 1) / (itemsPerPage * step));
+            document.getElementById('landingPage').style.display = 'none';
+            document.getElementById('mainApp').style.display = 'block';
+            generateNumbersAndFilenames(currentPage);
+            updatePaginationButtons();
+        }
+    }
+};
+
 // Handle form submission
 document.getElementById('inputForm').addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent form submission
@@ -24,7 +51,11 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
         alert("The start value must end in a 1 (e.g., 1, 2001, 5001). Please enter a valid value.");
         return; // Stop the submission process
     }
-
+    setCookie('industry', industry, 7);
+    setCookie('month', month, 7);
+    setCookie('start', start, 7);
+    setCookie('end', end, 7);
+    setCookie('clickedButtons', JSON.stringify(copiedButtonsByPage), 7);
     // Calculate total pages
     totalPages = Math.ceil((end - start + 1) / (itemsPerPage * step));
 
@@ -64,7 +95,7 @@ function copyToClipboard(text, button, identifier) {
         copiedButtonsByPage[currentPage] = new Set();
     }
     copiedButtonsByPage[currentPage].add(identifier);
-
+    setCookie('clickedButtons', JSON.stringify(copiedButtonsByPage), 7);
     // Create the "Copied!" message
     const copiedMessage = document.createElement('div');
     copiedMessage.textContent = "Copied!";
