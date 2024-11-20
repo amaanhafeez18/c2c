@@ -309,7 +309,8 @@ function generateNumbersAndFilenames(page) {
         outputDiv.appendChild(buttonContainer);
     }
 
-    document.getElementById('pageNumber').innerText = `Page ${page}`;
+    // document.getElementById('pageNumber').innerText = `Page ${page}`;
+    document.getElementById('pageNumber').innerText = `${page}/${totalPages}`;
     updateProgressBar(); // Update the progress bar whenever the page changes
 }
 
