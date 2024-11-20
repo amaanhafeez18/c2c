@@ -20,8 +20,12 @@ window.onload = function () {
             month = savedMonth;
             start = parseInt(savedStart);
             end = parseInt(savedEnd);
-            copiedButtonsByPage = savedClickedButtons ? JSON.parse(savedClickedButtons) : {};
-
+            try {
+                copiedButtonsByPage = savedClickedButtons ? JSON.parse(savedClickedButtons) : {};
+            } catch (error) {
+                copiedButtonsByPage = {};
+            }
+            
             // Skip the landing page
             totalPages = Math.ceil((end - start + 1) / (itemsPerPage * step));
             document.getElementById('landingPage').style.display = 'none';
@@ -70,7 +74,9 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
 
 // Function to update progress bar
 function updateProgressBar() {
-    const progressPercent = ((currentPage - 1) / (totalPages - 1)) * 100;
+    const progressPercent = totalPages > 1 
+    ? ((currentPage - 1) / (totalPages - 1)) * 100 
+    : 100;
     document.getElementById('progressFill').style.width = progressPercent + "%";
     document.getElementById('progressPercent').textContent = `    ${Math.round(progressPercent)}%`;
 }
