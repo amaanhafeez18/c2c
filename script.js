@@ -1,6 +1,6 @@
 // script.js
 
-let start, end, industry, month, prefix;
+let start, end, industry, month,year, prefix;
 let currentPage = 1;
 const itemsPerPage = 5;
 const step = 2000;
@@ -33,6 +33,7 @@ function saveProgress() {
         industry,
         month,
         start,
+        year,
         end,
         currentPage,
         copiedButtonsByPage: Object.fromEntries(
@@ -84,19 +85,22 @@ function restoreProgress(savedData) {
     end = savedData.end;
     currentPage = savedData.currentPage;
     copiedButtonsByPage = {};
+    year = savedData.year;
 
     // Convert arrays back to Sets
     for (const [page, identifiers] of Object.entries(savedData.copiedButtonsByPage)) {
         copiedButtonsByPage[page] = new Set(identifiers);
     }
 
-    prefix = `${industry}_${month}_`;
+    prefix = `${industry}_${month}_${year}_`;
 
     // Populate form fields with saved values
     document.getElementById('industry').value = industry;
     document.getElementById('month').value = month;
     document.getElementById('start').value = start;
     document.getElementById('end').value = end;
+    document.getElementById('year').value = year;
+
 
     // Calculate total pages
     totalPages = Math.ceil((end - start + 1) / (itemsPerPage * step));
@@ -116,8 +120,9 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
 
     // Get values from the form
     industry = document.getElementById('industry').value;
+    year = document.getElementById('year').value;
     month = document.getElementById('month').value;
-    prefix = `${industry}_${month}_`; // For example, 'Retail_NOV_'
+    prefix = `${industry}_${month}_${year}_`; // For example, 'Retail_NOV_2025_'
     start = parseInt(document.getElementById('start').value, 10);
     end = parseInt(document.getElementById('end').value, 10);
 
