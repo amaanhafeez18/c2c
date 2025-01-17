@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C2C</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <!-- Landing Page -->
     <div id="landingPage">
@@ -32,9 +34,11 @@
                             <option value="Information_51">(51) Information</option>
                             <option value="Finance_52">(52) Finance and Insurance</option>
                             <option value="RealEstate_53">(53) Real Estate and Rental and Leasing</option>
-                            <option value="Professional_54">(54) Professional, Scientific, and Technical Services</option>
+                            <option value="Professional_54">(54) Professional, Scientific, and Technical Services
+                            </option>
                             <option value="Management_55">(55) Management of Companies and Enterprises</option>
-                            <option value="Administrative_56">(56) Administrative and Support and Waste Management and Remediation Services</option>
+                            <option value="Administrative_56">(56) Administrative and Support and Waste Management and
+                                Remediation Services</option>
                             <option value="Educational_61">(61) Educational Services</option>
                             <option value="Healthcare_62">(62) Health Care and Social Assistance</option>
                             <option value="Arts_71">(71) Arts, Entertainment, and Recreation</option>
@@ -46,14 +50,19 @@
                     <div class="select-group">
                         <label for="month">Select Month:</label>
                         <select id="month" required>
+
+                            <option value="JAN">JAN</option>
+                            <option value="FEB">FEB</option>
+                            <option value="MAR">MAR</option>
+                            <option value="APR">APR</option>
+                            <option value="MAY">MAY</option>
+                            <option value="JUN">JUN</option>
+                            <option value="JUL">JUL</option>
+                            <option value="AUG">AUG</option>
+                            <option value="SEP">SEP</option>
+                            <option value="OCT">OCT</option>
                             <option value="NOV">NOV</option>
                             <option value="DEC">DEC</option>
-                            <option value="JAN">JAN</option>
-                            <option value="FEB">JAN</option>
-                            <option value="MAR">JAN</option>
-                            <option value="APRIL">JAN</option>
-
-
 
                         </select>
                     </div>
@@ -72,30 +81,31 @@
     </div>
 
     <!-- Main Application -->
-<!-- Main Application -->
-<div id="mainApp" style="display: none;">
-    <div class="scale-container">
-        <div class="container">
-            <div id="output"></div>
-            <div class="pagination">
-                <button id="backButton" class="page-button">Back</button>
-                <span id="pageNumber">Page 1</span>
-                <button id="nextButton" class="page-button">Next</button>
+    <!-- Main Application -->
+    <div id="mainApp" style="display: none;">
+        <div class="scale-container">
+            <div class="container">
+                <div id="output"></div>
+                <div class="pagination">
+                    <button id="backButton" class="page-button">Back</button>
+                    <span id="pageNumber">Page 1</span>
+                    <button id="nextButton" class="page-button">Next</button>
+                </div>
+            </div>
+            <div id="progress-container" style="text-align: center; margin-top: 20px;">
+                <div id="progressBar">
+                    <div id="progressFill"></div>
+                </div>
+                <div id="progressPercent">0%</div>
             </div>
         </div>
-        <div id="progress-container" style="text-align: center; margin-top: 20px;">
-            <div id="progressBar">
-                <div id="progressFill"></div>
-            </div>
-            <div id="progressPercent">0%</div>
-        </div>
-    </div>
 
-    <!-- Home Button -->
-    <button id="homeButton" class="home-button">Home</button>
-</div>
+        <!-- Home Button -->
+        <button id="homeButton" class="home-button">Home</button>
+    </div>
 
 
     <script src="script.js"></script>
 </body>
+
 </html>
